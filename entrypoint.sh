@@ -20,10 +20,6 @@ publish_dependencies_as_layer() {
     LAYER_VERSION=$(jq '.Version' <<<"$result")
     LAYER_ARN=$(jq -r '.LayerArn' <<<"$result")
 
-    echo "ahfdfafdadfas"
-    echo "${LAYER_VERSION}"
-    echo "${LAYER_ARN}"
-
     rm -rf python
     rm dependencies.zip
     cd ..

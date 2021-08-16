@@ -21,23 +21,21 @@ publish_dependencies_as_layer() {
 
     rm -rf python
     rm dependencies.zip
+    cd ..
+    rm -rf folder
 }
 
-# publish_function_code() {
-#     echo "Deploying the code itself..."
-#     zip -r code.zip . -x \*.git\*
-#     aws lambda update-function-code --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --zip-file fileb://code.zip
-# }
+publish_function_code() {
+    echo "Deploying the code itself..."
 
-# update_function_layers() {
-#     echo "Using the layer in the function..."
-#     aws lambda update-function-configuration --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --layers "${INPUT_LAMBDA_LAYER_ARN}:${LAYER_VERSION}"
-# }
+    printenv > .env
+    zip -r code.zip . -x \*.git\*
+    aws lambda update-function-code --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --zip-file fileb://code.zip
+}
 
 deploy_lambda_function() {
     publish_dependencies_as_layer
-    # publish_function_code
-    # update_function_layers
+    publish_function_code
 }
 
 deploy_lambda_function

@@ -19,6 +19,9 @@ publish_dependencies_as_layer() {
     local result=$(aws lambda publish-layer-version --layer-name "${INPUT_LAMBDA_LAYER_NAME}" --zip-file fileb://dependencies.zip --compatible-runtimes python3.7)
     LAYER_VERSION=$(jq '.Version' <<<"$result")
 
+    echo "ahfdfafdadfas"
+    echo "${LAYER_VERSION}"
+
     rm -rf python
     rm dependencies.zip
     cd ..
@@ -28,9 +31,14 @@ publish_dependencies_as_layer() {
 publish_function_code() {
     echo "Deploying the code itself..."
 
-    printenv > .env
+    printenv >.env
     zip -r code.zip . -x \*.git\*
     aws lambda update-function-code --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --zip-file fileb://code.zip
+}
+
+update_function_layers() {
+    echo "Using the layer in the function..."
+    aws lambda update-function-configuration --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --layers "${INPUT_LAMBDA_LAYER_ARN}:${LAYER_VERSION}"
 }
 
 deploy_lambda_function() {

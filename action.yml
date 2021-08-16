@@ -1,0 +1,19 @@
+name: AWS Lambda Sync
+author: Quang Luong
+description: Automatically update code changes to AWS Lambda with required packages on new layer.
+inputs:
+  lambda_layer_name:
+    description: The name for the Lambda layer the dependencies should be pushed to (every push is a new version).
+    required: true
+  lambda_function_name:
+    description: The Lambda function name. Check the AWS docs/readme for examples.
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.lambda_layer_name }}
+    - ${{ inputs.lambda_function_name }}
+branding:
+  icon: 'layers'
+  color: 'yellow'

@@ -11,7 +11,7 @@ publish_dependencies_as_layer() {
     deactivate
     mkdir python
     cd python
-    cp -r ../v-env/lib64/python3.7/site-packages/* .
+    cp -r ../v-env/lib/python3.7/site-packages/* .
     cd ..
     zip -r dependencies.zip python
 

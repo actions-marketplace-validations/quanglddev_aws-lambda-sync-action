@@ -7,7 +7,7 @@ publish_dependencies_as_layer() {
     cd folder
     virtualenv v-env
     source ./v-env/bin/activate
-    pip install -r "${INPUT_REQUIREMENTS_TXT}"
+    pip install -r ../requirements.txt
     deactivate
     mkdir python
     cd python

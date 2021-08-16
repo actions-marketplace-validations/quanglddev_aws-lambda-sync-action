@@ -2,10 +2,6 @@ name: AWS Lambda Sync
 author: Quang Luong
 description: Automatically update code changes to AWS Lambda with required packages on new layer.
 inputs:
-  requirements_txt:
-    description: the name/path to the requirements.txt file
-    required: true
-    default: 'requirements.txt'
   lambda_layer_name:
     description: The name for the Lambda layer the dependencies should be pushed to (every push is a new version).
     required: true
@@ -16,7 +12,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.requirements_txt }}
     - ${{ inputs.lambda_layer_name }}
     - ${{ inputs.lambda_function_name }}
 branding:

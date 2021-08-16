@@ -18,7 +18,7 @@ publish_dependencies_as_layer() {
     echo "Publishing dependencies as a layer..."
     local result=$(aws lambda publish-layer-version --layer-name "${INPUT_LAMBDA_LAYER_NAME}" --zip-file fileb://dependencies.zip --compatible-runtimes python3.7)
     LAYER_VERSION=$(jq '.Version' <<<"$result")
-    LAYER_ARN=$(jq '.LayerArn' <<<"$result")
+    LAYER_ARN=$(jq -r '.LayerArn' <<<"$result")
 
     echo "ahfdfafdadfas"
     echo "${LAYER_VERSION}"

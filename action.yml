@@ -15,5 +15,5 @@ runs:
     - ${{ inputs.lambda_layer_name }}
     - ${{ inputs.lambda_function_name }}
 branding:
-  icon: 'layers'
-  color: 'yellow'
+  icon: 'radio'
+  color: 'blue'

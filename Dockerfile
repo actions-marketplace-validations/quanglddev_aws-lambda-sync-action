@@ -1,11 +1,13 @@
-FROM python:3.7
+FROM amazonlinux:2.0.20210813.1
 
-RUN apt-get update
-RUN apt-get install -y jq zip
-RUN apt-get install -y python3-dev libpq-dev
-RUN pip install awscli
-RUN pip install virtualenv
+RUN sudo yum install -y amazon-linux-extras
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# RUN apt-get update
+# RUN apt-get install -y jq zip
+# RUN apt-get install -y python3-dev libpq-dev
+# RUN pip install awscli
+# RUN pip install virtualenv
+
+# ADD entrypoint.sh /entrypoint.sh
+# RUN chmod +x entrypoint.sh
+# ENTRYPOINT ["/entrypoint.sh"]

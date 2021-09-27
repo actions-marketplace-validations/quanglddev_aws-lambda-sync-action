@@ -1,5 +1,7 @@
 FROM amazonlinux:2.0.20210813.1
 
+USER root
+
 RUN yum install -y amazon-linux-extras
 RUN amazon-linux-extras enable python3.8
 RUN yum install -y python3.8

@@ -5,8 +5,8 @@ USER root
 RUN yum -y update
 
 RUN yum install -y amazon-linux-extras
-RUN amazon-linux-extras enable python3.8
-RUN yum install -y python3.8
+RUN amazon-linux-extras enable python3.7
+RUN yum install -y python3.7
 
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN yum install -y jq

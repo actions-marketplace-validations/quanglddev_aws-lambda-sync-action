@@ -10,6 +10,9 @@ RUN yum -y update
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install openssl-devel bzip2-devel libffi-devel
 
+RUN which python3.8
+RUN which python
+
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8
 
 RUN python3.8 --version

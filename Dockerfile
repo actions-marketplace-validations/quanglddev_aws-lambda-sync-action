@@ -1,6 +1,6 @@
 FROM amazonlinux:2.0.20210813.1
 
-RUN sudo yum install -y amazon-linux-extras
+RUN yum install -y amazon-linux-extras
 
 # RUN apt-get update
 # RUN apt-get install -y jq zip

@@ -45,5 +45,6 @@ deploy_lambda_function() {
     update_function_layers
 }
 
+sudo apt install python3-dev libpq-dev
 deploy_lambda_function
 echo "Done."
